@@ -2,7 +2,7 @@
 	session_start();	
 	require ("template_Top.php"); 
 ?>
-	<p><b>Offering the greatest albums in Rock &amp; Heavy Metal music around!!!</b></p>
+	<p><b>Offering the greatest albums in Rock &amp; Heavy Metal music around!!!!!!!</b></p>
     	
     <!-- <blockquote><q>IF IT AIN'T METAL, IT'S CRAP!</q></blockquote>
     <cite>Dee Snider: Radio Host of <a href="http://houseofhaironline.com">House of Hair</a></cite> -->
