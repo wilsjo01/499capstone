@@ -1,0 +1,133 @@
+html {	
+	background-image: url("../images/woods1_background.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+body {
+	background-image: url("../images/body_background.jpg");
+	
+	width: 1100px;
+	margin: 15px auto;
+	padding: 15px 15px;
+	
+	border: 3px solid black;
+	border-radius: 25px 25px 10px 10px;
+}
+
+header {
+	border-bottom: 2px solid #808080;
+}
+
+table.table1, table.table1 th, table.table1 td{
+	border: 1px solid black;
+	border: 1px solid black;
+	text-align:center;
+	padding:3px;
+}
+
+table.itemDetail, table.itemDetail th, table.itemDetail td {
+	background-color: #C0C0C0;
+	border: 1px solid black;
+	border: 1px solid black;
+	text-align: center;
+	padding: 1px;
+}
+
+nav {
+	font-size: 16px;
+}
+
+h1, h2, h4, h5 {
+	padding: 10px;
+	/*border: 1px dashed black;*/
+	
+	font-family: "League Gothic";
+	font-size: 60px;
+	color: black;
+	text-align:center;
+}
+
+footer {
+	border-top: 2px solid #808080;
+	clear: both;
+}
+
+#sidebar {
+	width: 190px;
+	height: 400px;
+	float: left;
+	border-right: 2px solid black;
+}
+
+section {
+	width: 600px;
+	height: 400px;
+	float: right;
+}
+
+p {
+	color: black;
+}
+
+nav {
+	font-weight: bolder;
+}
+
+a {
+	font-weight: bolder;
+}
+
+.blue {color: blue;}
+
+img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Styles for the Carousel - START */
+#carousel {
+	margin: 10px 0 0 0;
+	padding:0;
+	width:800px;
+	height:100px;
+}
+.button	{
+	margin:45px 10px 0 10px;
+	float:left;
+	height:25px;
+	width:25px;
+}
+.panel {
+	margin:0;
+	overflow:hidden;
+	position:relative;
+	float:left;
+	width:200px;
+	height:100px;
+}
+.panel-inner {
+	left:0;
+    position:absolute;
+    height:200px;
+    list-style:none;
+    margin:0;
+    padding:0
+}
+.panel-inner li	{
+	text-align: center;
+	padding: 0;
+	margin: 1px 1px 0 0;
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: #FFF
+}
+.panel-inner li img	{
+	width: 100px;
+	height: 100px;
+	margin: 1px 0 0 1px
+}
+/* Styles for the Carousel - END */
