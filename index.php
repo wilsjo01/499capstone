@@ -19,8 +19,5 @@
 		<li>Performance tuning is out of scope.</li>
 	</ul>
         
-    <p>
-    	Sign-up for our monthly Newsletter<br />
-        Enter your email address: <input type="text" name="email" id="email" title="enter email here" />
-	</p>
+
 <?php require ("template_Bottom.php"); ?>
