@@ -18,20 +18,4 @@
 		<li>This is a single player game. No functionality for multiplayer is planned.</li>
 		<li>Performance tuning is out of scope.</li>
 	</ul>
-<<<<<<< HEAD
-=======
-        
-    <p>
-		<form action='index.php' method='post'>
-    	Sign-up for our monthly Newsletter<br />
-        Enter your email address: <input type="text" name="email" id="email" title="enter email here"/>
-		</form>
-	</p>
-<?php 
-	$email= $_POST['email'];
-	//comment placeholder for prototype
-	echo "The email you entered is ".$email." if this email is incorrect please re-enter your email"; 
-?>
-
->>>>>>> origin/master
 <?php require ("template_Bottom.php"); ?>
