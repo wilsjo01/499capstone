@@ -38,7 +38,6 @@
 					*/
         	 	?>
         	 	<a href="index.php">Home</a> |
-        	 	<a href="Character_Selection.php">Select Character</a> |
 				<a href="Start_Game.php">Start Game</a> |
         	 	<a href="About_Us.php">About Us</a> |
         	 	<a href="Contact_Info.php">Contact Us</a> |
