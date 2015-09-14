@@ -6,8 +6,8 @@
 	<br />
 	<p>This is where you'd select the adventure you'd like to play through and your character.</p>
 	<br />
-	<h3> Start Game </h3> 
-	<form name="start" method="post" title="Choose Character"> 
+	<h3> Make Choice </h3> 
+	<form name="start" method="post" title="Choose Character" action='Game.php'> 
 		<table> 
 			<tr> <b> Select Character </b>
 				<td> Character One
