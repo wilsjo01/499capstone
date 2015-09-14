@@ -17,7 +17,7 @@
 	</p> 
 	<form name="start" method="post" title="Choose Character" action='Game.php'> 
 		<table> 
-			<tr> <b> Select Character </b>
+			<tr> <b> Select Story Option </b>
 				<td> Choice One
 				<input type='radio' name="choice" value="choice1">
 				</td>
