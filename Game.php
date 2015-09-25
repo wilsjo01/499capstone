@@ -1,7 +1,24 @@
 <?php 
 	session_start();	
 	require ("template_Top.php");
+	
+	$OptOneStories = array (
+	  	array(1,"McNally","McNally Story"),
+	  	array(2,"Concordia","Concordia Story"),
+	  	array(3,"Augsburg","Augsburg Story"),
+	  	array(4,"Foshay","Foshay Story"),
+	  	array(5,"First Ave","First Ave Story")
+	);
+
+	$OptTwoStories = array (
+	  	array(1,"Capitol","MN State Capitol Story"),
+	  	array(2,"Midway","Midway Marketplace Story"),
+	  	array(3,"UofM","UofM Medical Story"),
+	  	array(4,"Hennepin County","Hennepin County Gov't Center Story"),
+	  	array(5,"Target Center","Target Center Story")
+	);
 ?>
+	
 	<p> 
 		Ye on properly handsome returned throwing am no whatever. In without wishing he of picture no exposed talking minutes.
 		Curiosity continual belonging offending so explained it exquisite. Do remember to followed yourself material mr recurred carriage. 
