@@ -20,6 +20,10 @@
 ?>
 	
 	<p> 
+	<?php
+	if($_GET["char"] === "girl.png") echo "shit shitsthisthsithsithsitshi"
+?>
+	<img src= "../images/"+($_GET["char"])>
 		Ye on properly handsome returned throwing am no whatever. In without wishing he of picture no exposed talking minutes.
 		Curiosity continual belonging offending so explained it exquisite. Do remember to followed yourself material mr recurred carriage. 
 		High drew west we no or at john. About or given on witty event. Or sociable up material bachelor bringing landlord confined. 
