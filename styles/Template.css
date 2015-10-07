@@ -1,12 +1,14 @@
 html {	
-	background-image: url("../images/woods1_background.jpg");
+	background-image: url("../images/cartoon_forest.png");
 	background-attachment: fixed;
 	background-position: center;
 	background-size: cover;
 }
 
 body {
-	background-image: url("../images/body_background.jpg");
+	background-image: url("../images/green_body_background.jpg");
+	background-size: 200px 200px;
+
 	
 	width: 1100px;
 	margin: 15px auto;

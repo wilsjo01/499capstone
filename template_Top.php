@@ -23,7 +23,7 @@
 
 	<body>
 		<header>
-			<img src="images/MetroStateU_Logo_EDIT1.jpg" alt="MetroState Logo" class="center"/>
+			<img src="../images/new-logo.png" alt="MetroState Logo" class="center"/>
 			<br />
 			<nav>
 				<?php
