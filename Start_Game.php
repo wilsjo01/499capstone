@@ -12,11 +12,11 @@
 			<tr> <b> Select Character </b>
 			</tr>
 			<tr> 
-				<td><img src="../images/girl.png" height = 300 width = 180>
+				<td><img src="./images/girl.png" height = 300 width = 180>
 				</td>
-				<td><img src="../images/girl.png" height = 300 width = 180>
+				<td><img src="./images/girl.png" height = 300 width = 180>
 				</td>
-				<td><img src="../images/girl.png" height = 300 width = 180>
+				<td><img src="./images/girl.png" height = 300 width = 180>
 				</td>
 			</tr>
 			<tr>
@@ -35,9 +35,9 @@
 			<tr> <b> Select Game </b>
 			</tr>
 			<tr>
-				<td><img src="../images/purple_book.png" height=200 width = 150>
+				<td><img src="./images/purple_book.png" height=200 width = 150>
 				</td>
-				<td><img src="../images/green-book-md.png" height=200 width=150 >
+				<td><img src="./images/green-book-md.png" height=200 width=150 >
 				</td>
 			</tr>
 			<tr>

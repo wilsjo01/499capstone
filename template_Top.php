@@ -9,7 +9,7 @@
 
 		<title>Choose Your Own Adventure</title>
 		
-		<meta name="description" content="Contact Us page for vistors looking to get a hold of the company." />
+		<meta name="description" content="Contact Us page for visitors looking to get a hold of the company." />
 		<meta name="author" content="ICS-499 Group Project" />
 		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 		<link rel="stylesheet" href="styles/Template.css" />
