@@ -12,11 +12,11 @@
 			<tr> <b> Select Character </b>
 			</tr>
 			<tr> 
-				<td><img src="./images/girl.png" height = 300 width = 180>
+				<td><img src="./images/girl.png" height = 300>
 				</td>
-				<td><img src="./images/girl.png" height = 300 width = 180>
+				<td><img src="./images/girl.png" height = 300>
 				</td>
-				<td><img src="./images/girl.png" height = 300 width = 180>
+				<td><img src="./images/girl.png" height = 300>
 				</td>
 			</tr>
 			<tr>
