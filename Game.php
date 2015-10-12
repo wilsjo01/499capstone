@@ -1,9 +1,9 @@
 <!-- ================================================================================================================== -->
 <?php 
 	/*****************************************
-	* Author:  	
-	* Date: 	
-	* Description: 
+	* Author: 		Brandon Markgraf, Joshua Wilson, Madeline Marx, Dwight Solberg
+	* Date: 		10/11/15
+	* Description:	This is the main page that controls the flow of the game the user selects to play
 	*****************************************/
 	session_start();	
 	
@@ -13,7 +13,7 @@
 	Function test_input ($data) {
 		$data = trim($data);			//Strip unnecessary characters (extra space, tab, newline)
 		$data = stripslashes($data);	//remove backslashes (\)
-		$data = strip_tags($data);	//eliminate tags
+		$data = strip_tags($data);		//eliminate tags
 		$data = htmlspecialchars($data);//don't embed special chars
 	
 		Return $data;
@@ -21,11 +21,11 @@
 	
 	Function Print_Game_Choices () {
 		echo "<form name=\"Adventure Choice\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">";
-			echo "<h3>Which Path Do You Choose:<br /></h3>";
-			echo "<input type=\"radio\" name=\"choice\" value=\"Option1\" checked>".$_SESSION['OptOneStories'][$_SESSION['page']][1]."<br />";
-			echo "<input type=\"radio\" name=\"choice\" value=\"Option2\">".$_SESSION['OptTwoStories'][$_SESSION['page']][1]."<br />";
+			echo "<input type=\"radio\" name=\"choice\" value=\"Option1\" checked><b>".$_SESSION['OptOneStories'][$_SESSION['page']][1]."<b/><br />";
+			echo "<input type=\"radio\" name=\"choice\" value=\"Option2\"><b>".$_SESSION['OptTwoStories'][$_SESSION['page']][1]."<b/><br />";
 			echo "<br />";
-			echo "<input type=\"submit\" value=\"Submit Choice\" name=\"internalSubmit\" style=\"width:100px\">";			
+			echo "<input type=\"submit\" value=\"Submit Choice\" name=\"internalSubmit\" style=\"width:100px\">";
+			echo "&nbsp &nbsp";
 			echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
 		echo "</form>";
 	}
@@ -34,43 +34,37 @@
 	#array(x,[Location],[Story File],[Story Continue; 0=Yes/1=No]);
 	
 	Function Game1 () {
+		$_SESSION['story_title'] = "MetroState Adventure";
+		$_SESSION['story_base'] = file_get_contents('./Game_Stories/Game1/Metro_State.txt', true);
+		$_SESSION['post_story'] = file_get_contents('./Game_Stories/Game1/Train_Station.txt', true);
+		
 		#Option One Stories
 		$_SESSION['OptOneStories'] = array (
-			array(1,"McNally","McNally.txt",0),
-			array(2,"Concordia","Concordia.txt",0),
-			array(3,"Augsburg","Augsburg.txt",0),
-			array(4,"Foshay","Foshay.txt",1),
-			array(5,"First Ave","FirstAve.txt",0)
+			array(1,"McNally Smith College","McNally.txt",0),
+			array(2,"Concordia University","Concordia.txt",0),
+			array(3,"Augsburg College","Augsburg.txt",0),
+			array(4,"Foshay Tower","Foshay.txt",1),
+			array(5,"First Ave & 7th St Entry","FirstAve.txt",0)
 		);
 		#Option Two Stories
 		$_SESSION['OptTwoStories'] = array (
-			array(1,"Capitol","Capitol.txt",0),
-			array(2,"Midway","Midway.txt",1),
-			array(3,"UofM","UofM.txt",0),
-			array(4,"Hennepin County","Hennepin_County.txt",0),
+			array(1,"MN State Capitol","Capitol.txt",0),
+			array(2,"Midway Marketplace","Midway.txt",1),
+			array(3,"University of Minnesota","UofM.txt",0),
+			array(4,"Hennepin County Gov't Center","Hennepin_County.txt",0),
 			array(5,"Target Center","Target_Center.txt",1)
 		);
 	}
 	
-	Function Game2 () {
-		
-	}
+	Function Game2 () {}
 	
-	Function Game3 () {
-		
-	}
+	Function Game3 () {}
 	
-	Function Game4 () {
-		
-	}
+	Function Game4 () {}
 	
-	Function Game5 () {
-		
-	}
+	Function Game5 () {}
 	
-	Function Game6 () {
-		
-	}
+	Function Game6 () {}
 	
 	#########
 	# MAIN  #
@@ -80,9 +74,9 @@
 	if(isset($_POST['StartGameSubmit'])) {
 		$_SESSION['Game'] = test_input($_POST["GameSelection"]);
 		$_SESSION['character'] = test_input($_POST["CharSelection"]);
-		$_SESSION['story_base'] = file_get_contents('./Game_Stories/Game1/Metro_State.txt', true);
 		$_SESSION['page'] = 0;
 		
+		#Functions to Set the Session Variables for the Game selected
 		switch ($_SESSION['Game']) {
 			case "Game1":
 				Game1 ();
@@ -126,8 +120,6 @@
 				$story = file_get_contents('./Game_Stories/Game1/'.$_SESSION['OptTwoStories'][$i][2], true);
 				$story_over = $_SESSION['OptTwoStories'][$i][3];
 			}
-		} else {
-			$post_story = file_get_contents('./Game_Stories/Game1/Train_Station.txt', true);
 		}
 	}
 ?>
@@ -136,22 +128,18 @@
 <?php
 	require ("template_Top.php");
 	
-	echo "<h3>Hello ".$_SESSION['character']."!!! Welcome to the ".$_SESSION['Game']." adventure.</h3>";
+	echo "<h3>".$_SESSION['character'].", welcome to the \"".$_SESSION['story_title']."\" story.  Your choices should be made wisely.</h3>";
 	
 	echo "<p>";
-		if (isset($post_story)) {
-			print $post_story;
-		} else if (isset($story)){
-			print $story;
-			if ($story_over === 0) {
-				Print_Game_Choices();
-			} else {
-				echo "Story over, SORRY!!!!!";
-			}
-		} else {
-			print $_SESSION['story_base'];
-			Print_Game_Choices();
-		}
+	if ($_SESSION['page'] === 0) {
+		print nl2br($_SESSION['story_base']);
+		Print_Game_Choices();
+	} else if ($_SESSION['page'] <= 4) {
+		print nl2br($story);
+		if ($story_over === 0) {Print_Game_Choices();}
+	} else {
+		print nl2br($_SESSION['post_story']);
+	}
 	echo "</p>";
 
 	require ("template_Bottom.php");

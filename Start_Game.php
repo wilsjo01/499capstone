@@ -33,7 +33,7 @@
 			-->
 		</tr>
 		<tr>
-			<td>Game One<input type="radio" name="GameSelection" value="Game1" checked></td>
+			<td>MetroState Adventure<input type="radio" name="GameSelection" value="Game1" checked></td>
 		</tr>
 	</table>
 	<input type="Submit" value="Start Game" name="StartGameSubmit" style="width:100px">
