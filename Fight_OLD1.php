@@ -11,21 +11,12 @@
 	# FUNCTIONS #
 	#############
 	
-	Function test_input ($data) {
-		$data = trim($data);			//Strip unnecessary characters (extra space, tab, newline)
-		$data = stripslashes($data);	//remove backslashes (\)
-		$data = strip_tags($data);		//eliminate tags
-		$data = htmlspecialchars($data);//don't embed special chars
-	
-		Return $data;
-	}
-	
 	#How the player/monster array's are setup.
 	#Ex. array(x,[Player/Monster],[Hit Points],[Armor/Defense],[Attack Damage]);
 	
 	Function SetPlayers ($selection) {
 		$_SESSION['Players'] = array (
-			array(1,"Sally",60,5,4),
+			array(1,"Sally",20,5,4),
 			array(2,"John",10,13,6),
 			array(3,"Jeremy",6,17,8)
 		);
@@ -92,16 +83,16 @@
 			#Determine total damage dealt as a result of attack
 			$HIT = TRUE;
 			$TotalDamage = rand (1,$_SESSION[$attacker.'_AtkDmg']);
-			echo " and your attack HITS!!!  You deal a total damage of ".$TotalDamage.".  ";
+			echo " and your attack HITS!!!  You deal a total damage of ".$TotalDamage.".";
 		}
 		
 		#If $HIT is TRUE; attack was successful; let's take off damage
 		if ($HIT) {
 			#Take off the damage dealt from the defenders hit points
 			$_SESSION[$defender.'_HitPoints'] = $_SESSION[$defender.'_HitPoints'] - $TotalDamage;
-			echo $_SESSION[$defender]." you now have ".$_SESSION[$defender.'_HitPoints']." hit points left after being hit from ".$_SESSION[$attacker].".  ";
+			echo $_SESSION[$defender]." you now have ".$_SESSION[$defender.'_HitPoints']." hit points left after being hit from ".$_SESSION[$attacker].".";
 		} else {
-			echo " and your attempt to attack has MISSED and thus you dealt no damage.  ";
+			echo " and your attempt to attack has MISSED and thus you dealt no damage.";
 			Return TRUE;
 		}
 		
@@ -130,7 +121,27 @@
 		
 		#1. Determine who gets to attack first (0 = Player; 1=Monster)
 		$_SESSION['turn'] = rand (0,1);
+	}	
+	
+	if(isset($_POST['NextRound'])) {
+	
+	} else {	
+		$_SESSION['character'] = "Sally";
+		SetMonsters();
+		SetPlayers($_SESSION['character']);
+		$_SESSION['turn'] = rand (0,1);
+		$RoundResults = TRUE;
 	}
+	
+	#################
+	# TESTING MAIN  #
+	#################
+	/*
+	$_SESSION['character'] = "Sally";
+	SetMonsters();
+	SetPlayers($_SESSION['character']);
+	$_SESSION['turn'] = rand (0,1);	
+	*/
 ?>
 <!-- ================================================================================================================== -->
 <!-- MAIN HTML Page - START -->
@@ -138,7 +149,10 @@
 	require ("template_Top.php");
 	
 #Introductory FIGHT message to start fight
-	if(isset($_POST['StartFight'])) {
+	#if(isset($_POST['StartFight'])) {
+	if(isset($_POST['NextRound'])) {
+		
+	} else {
 		echo "<p>";
 			echo "Welcome <b>".$_SESSION['character']."</b> to the fight.  You have ".$_SESSION['Player_HitPoints']." HP and a DEF of ".$_SESSION['Player_Defense'].".  Good Luck!!!";
 			echo "<br />";
@@ -150,7 +164,7 @@
 			echo "<input type=\"submit\" value=\"Start Fight\" name=\"NextRound\" />";
 			echo "<br /><br />";
 		echo "</form>";
-		require ("template_Bottom.php");		
+		require ("template_Bottom.php");
 	}
 	
 #FIGHT round message(s)/results
@@ -161,9 +175,9 @@
 	
 	#3. Present appropriate results based off $RoundResults
 		if ($RoundResults === TRUE) {
-			if ($_SESSION['turn'] === 0) {$buttonValue = "Attack";} else {$buttonValue = "Defend";}
+			if ($_SESSION['turn'] === 0) {$buttonValue = "Fight";} else {$buttonValue = "Defend";}
 			
-			echo "<form name=\"NextRound\" action=\"".$_SERVER['PHP_SELF']."\" method=\"post\">";		
+			echo "<form name=\"customerForm\" action=\"".$_SERVER['PHP_SELF']."\" method=\"post\">";		
 				echo "<input type=\"submit\" value=\"".$buttonValue."\" name=\"NextRound\" />";
 				echo "<br /><br />";
 			echo "</form>";
@@ -171,22 +185,17 @@
 			require ("template_Bottom.php");
 		}
 	
-	#4. Allow player to return to Game.php to continue story (player WIN); otherwise return to index.php (home page) as story is over (player LOST)
+	#4. Return TRUE for player WIN otherwise do nothing as story is over (player Lost)
 		if ($RoundResults === FALSE) {
-			if ($_SESSION['Player_HitPoints'] > 0) {
-			#-- Player WON the fight; story can continue --#
-				echo "<p>".$_SESSION['Player']." you WON your fight against ".$_SESSION['Monster'].".  You are able to continue the story...</p>";				
-				echo "<form name=\"StoryReturn\" action=\"Game.php\" method=\"post\">";		
-					echo "<input type=\"submit\" value=\"Return to Story\" name=\"StoryReturn\" />";
-					echo "<br /><br />";
-				echo "</form>";
-			} else {
-			#-- Player LOST the fight; story cannot continue; thus return to home page --#
-				echo "<p>".$_SESSION['Player']." you LOST the Fight against ".$_SESSION['Monster'].".  Sadly, your story cannot continue. Better luck next time.</p>";
-				header("refresh:10;url=http://localhost:8080/ICS499_Capstone/Index.php");				
+			if ($_SESSION['Player_HitPoints'] > 0) { #Player WON the fight; story can continue			
+				echo "<p>".$_SESSION['Player']." you WON your fight against ".$_SESSION['Monster'].".  Your story can continue...</p>";
+				require ("template_Bottom.php");
+				Return TRUE;
+			} else { #Player LOST the fight; story cannot continue; thus return nothing
+				echo "<p>".$_SESSION['Player']." you LOST the Fight against ".$_SESSION['Monster'].".  Sadly, your story cannot continue.</p>";
+				require ("template_Bottom.php");
 			}
-			require ("template_Bottom.php");
-		}		
+		}
 	}
 ?>
 <!-- MAIN HTML Page - END  -->

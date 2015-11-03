@@ -19,24 +19,15 @@
 		Return $data;
 	}
 	
-	Function Print_Game_Choices ($fight) {
-		if ($fight === 0) {
-			echo "<form name=\"Adventure Choice\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">";
-				echo "<input type=\"radio\" name=\"choice\" value=\"Option1\" checked><b>".$_SESSION['OptOneStories'][$_SESSION['page']][1]."<b/><br />";
-				echo "<input type=\"radio\" name=\"choice\" value=\"Option2\"><b>".$_SESSION['OptTwoStories'][$_SESSION['page']][1]."<b/><br />";
-				echo "<br />";
-				echo "<input type=\"submit\" value=\"Submit Choice\" name=\"internalSubmit\" style=\"width:100px\">";
-				echo "&nbsp &nbsp";
-				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
-			echo "</form>";
-		} else {
-			echo "<form name=\"Start Fight\" method=\"post\" action=\"Fight.php\">";
-				echo "<input type=\"hidden\" name=\"CharSelection\" value=\"".$_SESSION['character']."\">";
-				echo "<input type=\"submit\" value=\"Begin Defense\" name=\"StartFight\" style=\"width:100px\">";
-				echo "&nbsp &nbsp";
-				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
-			echo "</form>";
-		}
+	Function Print_Game_Choices () {
+		echo "<form name=\"Adventure Choice\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">";
+			echo "<input type=\"radio\" name=\"choice\" value=\"Option1\" checked><b>".$_SESSION['OptOneStories'][$_SESSION['page']][1]."<b/><br />";
+			echo "<input type=\"radio\" name=\"choice\" value=\"Option2\"><b>".$_SESSION['OptTwoStories'][$_SESSION['page']][1]."<b/><br />";
+			echo "<br />";
+			echo "<input type=\"submit\" value=\"Submit Choice\" name=\"internalSubmit\" style=\"width:100px\">";
+			echo "&nbsp &nbsp";
+			echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
+		echo "</form>";
 	}
 	
 	#How the story array's are setup.
@@ -84,7 +75,6 @@
 		$_SESSION['Game'] = test_input($_POST["GameSelection"]);
 		$_SESSION['character'] = test_input($_POST["CharSelection"]);
 		$_SESSION['page'] = 0;
-		$_SESSION['fight'] = 0;
 		
 		#Functions to Set the Session Variables for the Game selected
 		switch ($_SESSION['Game']) {
@@ -114,26 +104,21 @@
 		$_SESSION['page'] = 0;
 	}
 	
-	#Action(s) for Story Return button from Fight.php
-	if (isset($_POST['StoryReturn'])) {
-	}
-	
 	#Action(s) for Internal Submit Button for Story Selection
-	if(isset($_POST['internalSubmit']) or isset($_POST['StoryReturn'])) {
-		#Peform below action if submit comes from Game.php otherwise move on to next code
-		if (isset($_POST['internalSubmit'])) {$_SESSION['choice'] = test_input($_POST["choice"]);}		
+	if(isset($_POST['internalSubmit'])) {
+		$choice = test_input($_POST["choice"]);
 		
 		++$_SESSION['page'];
 		$i = $_SESSION['page'] - 1;		
 		
 		if ($_SESSION['page'] <= 4) {
 			#Get the Story the User Selected
-			if ($_SESSION['choice'] == "Option1") {
-				$_SESSION['story'] = file_get_contents('./Game_Stories/Game1/'.$_SESSION['OptOneStories'][$i][2], true);
-				$_SESSION['fight'] = $_SESSION['OptOneStories'][$i][3];
-			} else if ($_SESSION['choice'] == "Option2") {
-				$_SESSION['story'] = file_get_contents('./Game_Stories/Game1/'.$_SESSION['OptTwoStories'][$i][2], true);
-				$_SESSION['fight'] = $_SESSION['OptTwoStories'][$i][3];
+			if ($choice == "Option1") {
+				$story = file_get_contents('./Game_Stories/Game1/'.$_SESSION['OptOneStories'][$i][2], true);
+				$story_over = $_SESSION['OptOneStories'][$i][3];
+			} else if ($choice == "Option2") {
+				$story = file_get_contents('./Game_Stories/Game1/'.$_SESSION['OptTwoStories'][$i][2], true);
+				$story_over = $_SESSION['OptTwoStories'][$i][3];
 			}
 		}
 	}
@@ -143,17 +128,15 @@
 <?php
 	require ("template_Top.php");
 	
-	if(isset($_POST['StartGameSubmit'])) {
-		echo "<h3>".$_SESSION['character'].", welcome to the \"".$_SESSION['story_title']."\" story.  Your choices should be made wisely.</h3>";
-	}
+	echo "<h3>".$_SESSION['character'].", welcome to the \"".$_SESSION['story_title']."\" story.  Your choices should be made wisely.</h3>";
 	
 	echo "<p>";
 	if ($_SESSION['page'] === 0) {
 		print nl2br($_SESSION['story_base']);
-		Print_Game_Choices($_SESSION['fight']);
+		Print_Game_Choices();
 	} else if ($_SESSION['page'] <= 4) {
-		print nl2br($_SESSION['story']);
-		Print_Game_Choices($_SESSION['fight']);
+		print nl2br($story);
+		if ($story_over === 0) {Print_Game_Choices();}
 	} else {
 		print nl2br($_SESSION['post_story']);
 	}
