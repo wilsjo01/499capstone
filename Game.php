@@ -116,15 +116,17 @@
 	
 	#Action(s) for Story Return button from Fight.php
 	if (isset($_POST['StoryReturn'])) {
+		$i = $_SESSION['page'] - 1;
+		$_SESSION['fight'] = 0;
 	}
 	
 	#Action(s) for Internal Submit Button for Story Selection
-	if(isset($_POST['internalSubmit']) or isset($_POST['StoryReturn'])) {
+	if(isset($_POST['internalSubmit'])) {
 		#Peform below action if submit comes from Game.php otherwise move on to next code
-		if (isset($_POST['internalSubmit'])) {$_SESSION['choice'] = test_input($_POST["choice"]);}		
+		$_SESSION['choice'] = test_input($_POST["choice"]);
 		
 		++$_SESSION['page'];
-		$i = $_SESSION['page'] - 1;		
+		$i = $_SESSION['page'] - 1;
 		
 		if ($_SESSION['page'] <= 4) {
 			#Get the Story the User Selected
@@ -152,10 +154,15 @@
 		print nl2br($_SESSION['story_base']);
 		Print_Game_Choices($_SESSION['fight']);
 	} else if ($_SESSION['page'] <= 4) {
-		print nl2br($_SESSION['story']);
+		if(isset($_POST['internalSubmit'])) {
+			print nl2br($_SESSION['story']);
+		} else {
+			echo "After your fight, you must decide where you would you like to go next...";
+		}
 		Print_Game_Choices($_SESSION['fight']);
 	} else {
 		print nl2br($_SESSION['post_story']);
+		header("refresh:10;url=http://localhost:8080/ICS499_Capstone/Index.php");
 	}
 	echo "</p>";
 
