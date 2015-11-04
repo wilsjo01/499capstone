@@ -6,17 +6,30 @@ html {
 }
 
 body {
-	background-image: url("../images/green_body_background.jpg");
+	background-image: url("../images/gray.jpg");
 	background-size: 200px 200px;
+	opacity:0.9;
 
+	font-family: apple,serif ;
+	font-size:12px;
 	
-	width: 1100px;
+	width: 900px;
 	margin: 15px auto;
 	padding: 15px 15px;
 	
 	border: 3px solid black;
 	border-radius: 25px 25px 10px 10px;
 }
+
+@font-face {
+    font-family:apple;
+    src: url(Hiragino.otf);
+}
+}@font-face {
+    font-family:keepCalm;
+    src: url(KeepCalm.ttf);
+}
+
 
 header {
 	border-bottom: 2px solid #808080;
@@ -41,20 +54,34 @@ nav {
 	font-size: 16px;
 }
 
-h1, h2, h4, h5 {
+h3{
 	padding: 10px;
-	/*border: 1px dashed black;*/
 	
-	font-family: "League Gothic";
-	font-size: 60px;
+	font-family: apple,serif ;
+	font-size: 25px;
 	color: black;
 	text-align:center;
+}
+
+h1, h2, h4, h5 {
+	
+	font-family: apple,sans-serif ;
+	font-size: 25px;
+	color: black;
+	text-align:left;
 }
 
 footer {
 	border-top: 2px solid #808080;
 	clear: both;
 }
+
+/*input[type="radio"] {
+    display: none;
+}
+input[type="radio"]:checked + label {
+    border: 1px solid red;
+}*/
 
 #sidebar {
 	width: 190px;
@@ -74,19 +101,36 @@ p {
 }
 
 nav {
-	font-weight: bolder;
+	font-weight: bold;
+	color: black;
+	font-size:15;
 }
 
 a {
 	font-weight: bolder;
 }
 
-.blue {color: blue;}
+a:link {
+    color: #262091;
+}
+
+a:visited {
+    color: #5a3ea3;
+}
 
 img.center {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 600px;
+  height: 50px;
 }
 
 /* Styles for the Carousel - START */
@@ -133,3 +177,42 @@ img.center {
 	margin: 1px 0 0 1px
 }
 /* Styles for the Carousel - END */
+
+
+
+/*fancy css for hovering radio buttons*/
+.cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.Sally{background-image:url(girl.png);}
+.Joe{background-image:url(girl.png);}
+.Game1{background-image:url(purple_book.png)}
+.Game2{background-image:url(green-book-md.png)}
+
+.cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:200px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
