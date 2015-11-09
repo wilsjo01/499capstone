@@ -25,9 +25,9 @@
 	
 	Function SetPlayers ($selection) {
 		$_SESSION['Players'] = array (
-			array(1,"Sally",60,4,6),
-			array(2,"Joe",5,3,5),
-			array(3,"Jeremy",60,7,6)
+			array(1,"Sally",26,4,5),
+			array(2,"Joe",27,3,6),
+			array(3,"Tom",24,8,3)
 		);
 		
 		foreach ($_SESSION['Players'] as list($arrItem1, $arrItem2)) {
@@ -43,9 +43,9 @@
 	
 	Function SetMonsters () {
 		$_SESSION['Monsters'] = array (
-			array(1,"Zombie",14,6,4),
-			array(2,"Ogre",18,4,6),
-			array(3,"Troll",16,5,5)
+			array(1,"Zombie",22,6,4),
+			array(2,"Ogre",20,4,6),
+			array(3,"Troll",23,5,5)
 		);
 		
 		#Generate which monster the player will fight
