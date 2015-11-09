@@ -93,7 +93,7 @@
 			$HIT = TRUE;
 			$TotalDamage = rand (1,$_SESSION[$attacker.'_AtkDmg']);
 			echo " and your attack HITS!!!  You deal a total damage of ".$TotalDamage.".  ";
-			echo "<progress max=\"60\" value=\"".$_SESSION[$defender.'_HitPoints']."\"> health</progress>";
+			/*echo "<progress max=\"60\" value=\"".$_SESSION[$defender.'_HitPoints']."\"> health</progress>";*/
 		}
 		
 		#If $HIT is TRUE; attack was successful; let's take off damage
