@@ -187,8 +187,9 @@ progress[value] {
        -moz-appearance:none;
             appearance:none;
 }
+.Tom{background-image:url(boy1.png);}
 .Sally{background-image:url(girl.png);}
-.Joe{background-image:url(girl.png);}
+.Joe{background-image:url(boy2.png);}
 .Game1{background-image:url(purple_book.png)}
 .Game2{background-image:url(green-book-md.png)}
 

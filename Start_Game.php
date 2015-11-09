@@ -10,6 +10,8 @@
 		<tr><h2>Select a Character</h2></tr>
 		<tr>
 			<div class="cc-selector">
+			<input type="radio" name="CharSelection" value="Tom" id="Tom" checked/>
+        	<label class="drinkcard-cc Tom" for="Tom"></label>
         	<input type="radio" name="CharSelection" value="Sally" id="Sally" checked/>
         	<label class="drinkcard-cc Sally" for="Sally"></label>
         	<input type="radio" name="CharSelection" value="Joe" id="Joe" />
