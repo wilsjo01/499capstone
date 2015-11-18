@@ -129,9 +129,31 @@ progress[value] {
   -webkit-appearance: none;
    appearance: none;
 
-  width: 600px;
-  height: 50px;
+  width: 175px;
+  height: 15px;
+  border-style: solid;
+  border-color: #4d4d4d;
+  border-width: 1px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.25) inset;
 }
+
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(top, 
+	                           rgba(45, 227, 151, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #2de397, #10c479);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+}
+
 
 /* Styles for the Carousel - START */
 #carousel {
@@ -187,9 +209,9 @@ progress[value] {
        -moz-appearance:none;
             appearance:none;
 }
-.Tom{background-image:url(boy1.png);}
-.Sally{background-image:url(girl.png);}
-.Joe{background-image:url(boy2.png);}
+.Tom{background-image:url(tom.png);}
+.Sally{background-image:url(sally.png);}
+.Joe{background-image:url(joe.png);}
 .Game1{background-image:url(purple_book.png)}
 .Game2{background-image:url(green-book-md.png)}
 

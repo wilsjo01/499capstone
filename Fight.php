@@ -25,15 +25,16 @@
 	
 	Function SetPlayers ($selection) {
 		$_SESSION['Players'] = array (
-			array(1,"Sally",26,4,5),
-			array(2,"Joe",27,3,6),
-			array(3,"Tom",24,8,3)
+			array(1,"Sally",26,4,9),
+			array(2,"Joe",27,3,9),
+			array(3,"Tom",15,8,3)
 		);
 		
 		foreach ($_SESSION['Players'] as list($arrItem1, $arrItem2)) {
 			if ($arrItem2 === $selection) {
 				$arrIndex = $arrItem1-1;
 				$_SESSION['Player'] = $_SESSION['Players'][$arrIndex][1];
+				$_SESSION['Player_TotalHitPoints'] = $_SESSION['Players'][$arrIndex][2];
 				$_SESSION['Player_HitPoints'] = $_SESSION['Players'][$arrIndex][2];
 				$_SESSION['Player_Defense'] = $_SESSION['Players'][$arrIndex][3];
 				$_SESSION['Player_AtkDmg'] = $_SESSION['Players'][$arrIndex][4];
@@ -43,15 +44,16 @@
 	
 	Function SetMonsters () {
 		$_SESSION['Monsters'] = array (
-			array(1,"Zombie",22,6,4),
-			array(2,"Ogre",20,4,6),
-			array(3,"Troll",23,5,5)
+			array(1,"Zombie",22,1,8),
+			array(2,"Ogre",20,1,8),
+			array(3,"Troll",23,1,8)
 		);
 		
 		#Generate which monster the player will fight
 		#Then set session variables for HP & Def.
 		$x = rand (0,2);
 		$_SESSION['Monster'] = $_SESSION['Monsters'][$x][1];
+		$_SESSION['Monster_TotalHitPoints'] = $_SESSION['Monsters'][$x][2];
 		$_SESSION['Monster_HitPoints'] = $_SESSION['Monsters'][$x][2];
 		$_SESSION['Monster_Defense'] = $_SESSION['Monsters'][$x][3];
 		$_SESSION['Monster_AtkDmg'] = $_SESSION['Monsters'][$x][4];
@@ -93,7 +95,7 @@
 			$HIT = TRUE;
 			$TotalDamage = rand (1,$_SESSION[$attacker.'_AtkDmg']);
 			echo " and your attack HITS!!!  You deal a total damage of ".$TotalDamage.".  ";
-			/*echo "<progress max=\"60\" value=\"".$_SESSION[$defender.'_HitPoints']."\"> health</progress>";*/
+			
 		}
 		
 		#If $HIT is TRUE; attack was successful; let's take off damage
@@ -113,6 +115,9 @@
 			#defender is SMOKED because the total damage is more than remaining HP			
 			Return FALSE;
 		}
+		
+		
+		
 	}
 
 #^^^^^^^^^^^ Fighting Functions - END ^^^^^^^^^^^#
@@ -147,6 +152,30 @@
 			echo "<br />";
 		echo "</p>";
 		
+		
+		echo "<table><tr><td>";
+		echo "<progress max=\"".$_SESSION['Monster_TotalHitPoints']."\" value=\"".$_SESSION['Monster_HitPoints']."\">CHECK</progress><br>";
+		echo "</td><td>";
+		if ($_SESSION['Monster']==='Ogre'){
+			echo "<img src=\"./images/monster.png\" height = 175><br>ogre";
+		}if ($_SESSION['Monster']==='Zombie'){
+			echo "<img src=\"./images/zomb.png\" height = 175><br>zombie";
+		}if ($_SESSION['Monster']==='Troll'){
+			echo "<img src=\"./images/zomb.png\" height = 175><br>troll";
+		}
+		echo "</td></tr><tr><td>";
+		if ($_SESSION['Player']==='Sally'){
+			echo "<img src=\"./images/sally.png\" height = 175><br>";
+		}if ($_SESSION['Player']==='Tom'){
+			echo "<img src=\"./images/tom.png\" height = 175><br>";
+		}if ($_SESSION['Player']==='Joe'){
+			echo "<img src=\"./images/joe.png\" height = 175><br>";
+		}
+		echo "</td><td>";
+		echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress>";
+		echo "</td></tr></table>";
+		
+
 		echo "<form name=\"customerForm\" action=\"".$_SERVER['PHP_SELF']."\" method=\"post\">";		
 			echo "<input type=\"submit\" value=\"Start Fight\" name=\"NextRound\" />";
 			echo "<br /><br />";
@@ -163,6 +192,31 @@
 	#3. Present appropriate results based off $RoundResults
 		if ($RoundResults === TRUE) {
 			if ($_SESSION['turn'] === 0) {$buttonValue = "Attack";} else {$buttonValue = "Defend";}
+			
+			
+			echo "<table><tr><td>";
+			echo "<progress max=\"".$_SESSION['Monster_TotalHitPoints']."\" value=\"".$_SESSION['Monster_HitPoints']."\">CHECK</progress><br>";
+			echo "</td><td>";
+			if ($_SESSION['Monster']==='Ogre'){
+				echo "<img src=\"./images/monster.png\" height = 175><br>ogre";
+			}if ($_SESSION['Monster']==='Zombie'){
+				echo "<img src=\"./images/zomb.png\" height = 175><br>zombie";
+			}if ($_SESSION['Monster']==='Troll'){
+				echo "<img src=\"./images/zomb.png\" height = 175><br>troll";
+			}			
+			echo "</td></tr><tr><td>";
+			if ($_SESSION['Player']==='Sally'){
+				echo "<img src=\"./images/sally.png\" height = 175><br>";
+			}if ($_SESSION['Player']==='Tom'){
+				echo "<img src=\"./images/tom.png\" height = 175><br>";
+			}if ($_SESSION['Player']==='Joe'){
+				echo "<img src=\"./images/joe.png\" height = 175><br>";
+			}
+			echo "</td><td>";
+			echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress>";
+			echo "</td></tr></table>";
+			
+			
 			
 			echo "<form name=\"NextRound\" action=\"".$_SERVER['PHP_SELF']."\" method=\"post\">";		
 				echo "<input type=\"submit\" value=\"".$buttonValue."\" name=\"NextRound\" />";
