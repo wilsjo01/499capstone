@@ -41,22 +41,29 @@
 			}
 		}
 	}
-	
-	Function SetMonsters () {
-		$_SESSION['Monsters'] = array (
-			array(1,"Zombie",22,1,8),
-			array(2,"Ogre",20,1,8),
-			array(3,"Troll",23,1,8)
-		);
+	Function SetMonsters() {
+		require ('database.php'); 
+		$monsCountQuery = "SELECT COUNT(*)  FROM monsters";
+		$result = mysqli_query($dbc, $monsCountQuery);
+    
+		$row = mysqli_fetch_row($result);
+		$count = $row[0];  
 		
 		#Generate which monster the player will fight
 		#Then set session variables for HP & Def.
-		$x = rand (0,2);
-		$_SESSION['Monster'] = $_SESSION['Monsters'][$x][1];
-		$_SESSION['Monster_TotalHitPoints'] = $_SESSION['Monsters'][$x][2];
-		$_SESSION['Monster_HitPoints'] = $_SESSION['Monsters'][$x][2];
-		$_SESSION['Monster_Defense'] = $_SESSION['Monsters'][$x][3];
-		$_SESSION['Monster_AtkDmg'] = $_SESSION['Monsters'][$x][4];
+		$x = rand (1,$count);
+		mysqli_free_result($result);
+
+		$monsQuery = "SELECT *  FROM monsters WHERE id = '".$x."'";
+		$result = mysqli_query($dbc, $monsQuery);
+    
+		$row = mysqli_fetch_row($result);  
+		
+		$_SESSION['Monster'] = $row[1];
+		$_SESSION['Monster_TotalHitPoints'] = $row[2];
+		$_SESSION['Monster_HitPoints'] = $row[2];
+		$_SESSION['Monster_Defense'] = $row[3];
+		$_SESSION['Monster_AtkDmg'] = $row[4];
 	}
 #vvvvvvvvvvv Fighting Functions - START vvvvvvvvvvv#
 
