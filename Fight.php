@@ -24,25 +24,24 @@
 	#Ex. array(x,[Player/Monster],[Hit Points],[Armor/Defense],[Attack Damage]);
 	
 	Function SetPlayers ($selection) {
-		$_SESSION['Players'] = array (
-			array(1,"Sally",26,4,9),
-			array(2,"Joe",27,3,9),
-			array(3,"Tom",15,8,3)
-		);
+		require ('database.php'); 
 		
-		foreach ($_SESSION['Players'] as list($arrItem1, $arrItem2)) {
-			if ($arrItem2 === $selection) {
-				$arrIndex = $arrItem1-1;
-				$_SESSION['Player'] = $_SESSION['Players'][$arrIndex][1];
-				$_SESSION['Player_TotalHitPoints'] = $_SESSION['Players'][$arrIndex][2];
-				$_SESSION['Player_HitPoints'] = $_SESSION['Players'][$arrIndex][2];
-				$_SESSION['Player_Defense'] = $_SESSION['Players'][$arrIndex][3];
-				$_SESSION['Player_AtkDmg'] = $_SESSION['Players'][$arrIndex][4];
-			}
-		}
+		$charQuery = "SELECT *  FROM characters WHERE name = '".$selection."'";
+		$result = mysqli_query($dbc, $charQuery);
+    
+		$row = mysqli_fetch_row($result);  
+		
+		$_SESSION['Player'] = $row[1];
+		$_SESSION['Player_TotalHitPoints'] = $row[2];
+		$_SESSION['Player_HitPoints'] = $row[2];
+		$_SESSION['Player_Defense'] = $row[3];
+		$_SESSION['Player_AtkDmg'] = $row[4];
+		
+		mysqli_free_result($result);
 	}
 	Function SetMonsters() {
 		require ('database.php'); 
+
 		$monsCountQuery = "SELECT COUNT(*)  FROM monsters";
 		$result = mysqli_query($dbc, $monsCountQuery);
     
@@ -64,6 +63,8 @@
 		$_SESSION['Monster_HitPoints'] = $row[2];
 		$_SESSION['Monster_Defense'] = $row[3];
 		$_SESSION['Monster_AtkDmg'] = $row[4];
+		
+		mysqli_free_result($result);
 	}
 #vvvvvvvvvvv Fighting Functions - START vvvvvvvvvvv#
 
