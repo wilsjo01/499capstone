@@ -3,7 +3,7 @@
 CREATE DATABASE IF NOT EXISTS `chooseYourAdventure`; 
 use chooseYourAdventure;
 
-CREATE TABLE `monsters` (
+CREATE TABLE IF NOT EXISTS `monsters` (
 	`id` INT NOT NULL AUTO_INCREMENT, 
 	`name` VARCHAR(45) NOT NULL,
 	`hitpoints` INT NOT NULL,
