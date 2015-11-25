@@ -163,13 +163,14 @@
 		
 		echo "<table><tr><td>";
 		echo "<progress max=\"".$_SESSION['Monster_TotalHitPoints']."\" value=\"".$_SESSION['Monster_HitPoints']."\">CHECK</progress><br>";
+		echo "".$_SESSION['Monster_HitPoints']."/".$_SESSION['Monster_TotalHitPoints']." HP";
 		echo "</td><td>";
 		if ($_SESSION['Monster']==='Ogre'){
-			echo "<img src=\"./images/monster.png\" height = 175><br>ogre";
+			echo "<img src=\"./images/monster.png\" height = 175><br>";
 		}if ($_SESSION['Monster']==='Zombie'){
-			echo "<img src=\"./images/zomb.png\" height = 175><br>zombie";
+			echo "<img src=\"./images/zomb.png\" height = 175><br>";
 		}if ($_SESSION['Monster']==='Troll'){
-			echo "<img src=\"./images/zomb.png\" height = 175><br>troll";
+			echo "<img src=\"./images/zomb.png\" height = 175><br>";
 		}
 		echo "</td></tr><tr><td>";
 		if ($_SESSION['Player']==='Sally'){
@@ -180,7 +181,8 @@
 			echo "<img src=\"./images/joe.png\" height = 175><br>";
 		}
 		echo "</td><td>";
-		echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress>";
+		echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress><br>";
+		echo "".$_SESSION['Player_HitPoints']."/".$_SESSION['Player_TotalHitPoints']." HP";
 		echo "</td></tr></table>";
 		
 
@@ -204,24 +206,26 @@
 			
 			echo "<table><tr><td>";
 			echo "<progress max=\"".$_SESSION['Monster_TotalHitPoints']."\" value=\"".$_SESSION['Monster_HitPoints']."\">CHECK</progress><br>";
+			echo "".$_SESSION['Monster_HitPoints']."/".$_SESSION['Monster_TotalHitPoints']." HP";
 			echo "</td><td>";
 			if ($_SESSION['Monster']==='Ogre'){
-				echo "<img src=\"./images/monster.png\" height = 175><br>ogre";
+				echo "<img src=\"./images/monster.png\" height = 175><br>";
 			}if ($_SESSION['Monster']==='Zombie'){
-				echo "<img src=\"./images/zomb.png\" height = 175><br>zombie";
+				echo "<img src=\"./images/zomb.png\" height = 175><br>";
 			}if ($_SESSION['Monster']==='Troll'){
-				echo "<img src=\"./images/zomb.png\" height = 175><br>troll";
+				echo "<img src=\"./images/zomb.png\" height = 175><br>";
 			}			
 			echo "</td></tr><tr><td>";
 			if ($_SESSION['Player']==='Sally'){
-				echo "<img src=\"./images/sally.png\" height = 175><br>";
+				echo "<img src=\"./images/sally_back.png\" height = 175><br>";
 			}if ($_SESSION['Player']==='Tom'){
 				echo "<img src=\"./images/tom.png\" height = 175><br>";
 			}if ($_SESSION['Player']==='Joe'){
 				echo "<img src=\"./images/joe.png\" height = 175><br>";
 			}
 			echo "</td><td>";
-			echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress>";
+			echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress><br>";
+			echo "".$_SESSION['Player_HitPoints']."/".$_SESSION['Player_TotalHitPoints']." HP";
 			echo "</td></tr></table>";
 			
 			
