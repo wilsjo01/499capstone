@@ -36,33 +36,13 @@
 		$_SESSION['Player_HitPoints'] = $row[2];
 		$_SESSION['Player_Defense'] = $row[3];
 		$_SESSION['Player_AtkDmg'] = $row[4];
+	
 		
-		mysqli_free_result($result);
-	}
-	Function SetMonsters() {
-		require ('database.php'); 
-
-		$monsCountQuery = "SELECT COUNT(*)  FROM monsters";
-		$result = mysqli_query($dbc, $monsCountQuery);
-    
-		$row = mysqli_fetch_row($result);
-		$count = $row[0];  
-		
-		#Generate which monster the player will fight
-		#Then set session variables for HP & Def.
-		$x = rand (1,$count);
-		mysqli_free_result($result);
-
-		$monsQuery = "SELECT *  FROM monsters WHERE id = '".$x."'";
-		$result = mysqli_query($dbc, $monsQuery);
-    
-		$row = mysqli_fetch_row($result);  
-		
-		$_SESSION['Monster'] = $row[1];
-		$_SESSION['Monster_TotalHitPoints'] = $row[2];
-		$_SESSION['Monster_HitPoints'] = $row[2];
-		$_SESSION['Monster_Defense'] = $row[3];
-		$_SESSION['Monster_AtkDmg'] = $row[4];
+		$_SESSION['Monster'] = "Wattshock";
+		$_SESSION['Monster_TotalHitPoints'] = 40;
+		$_SESSION['Monster_HitPoints'] = 40;
+		$_SESSION['Monster_Defense'] = 7;
+		$_SESSION['Monster_AtkDmg'] = 5;
 		
 		mysqli_free_result($result);
 	}
@@ -139,7 +119,6 @@
 		$_SESSION['character'] = test_input($_POST["CharSelection"]);
 		
 		#0. Set the Monster and Player stats first
-		SetMonsters();
 		SetPlayers($_SESSION['character']);
 		
 		#1. Determine who gets to attack first (0 = Player; 1=Monster)
@@ -163,14 +142,9 @@
 		
 		echo "<table><tr><td>";
 		echo "<progress max=\"".$_SESSION['Monster_TotalHitPoints']."\" value=\"".$_SESSION['Monster_HitPoints']."\">CHECK</progress><br>";
+		echo "".$_SESSION['Monster_HitPoints']."/".$_SESSION['Monster_TotalHitPoints']." HP";
 		echo "</td><td>";
-		if ($_SESSION['Monster']==='Ogre'){
-			echo "<img src=\"./images/monster.png\" height = 175><br>ogre";
-		}if ($_SESSION['Monster']==='Zombie'){
-			echo "<img src=\"./images/zomb.png\" height = 175><br>zombie";
-		}if ($_SESSION['Monster']==='Troll'){
-			echo "<img src=\"./images/zomb.png\" height = 175><br>troll";
-		}
+		echo "<img src=\"./images/mr_electric.jpg\" height = 175><br>";
 		echo "</td></tr><tr><td>";
 		if ($_SESSION['Player']==='Sally'){
 			echo "<img src=\"./images/sally_back.png\" height = 175><br>";
@@ -179,6 +153,7 @@
 		}if ($_SESSION['Player']==='Joe'){
 			echo "<img src=\"./images/joe.png\" height = 175><br>";
 		}
+		echo "".$_SESSION['Player_HitPoints']."/".$_SESSION['Player_TotalHitPoints']." HP";
 		echo "</td><td>";
 		echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress>";
 		echo "</td></tr></table>";
@@ -204,14 +179,9 @@
 			
 			echo "<table><tr><td>";
 			echo "<progress max=\"".$_SESSION['Monster_TotalHitPoints']."\" value=\"".$_SESSION['Monster_HitPoints']."\">CHECK</progress><br>";
+			echo "".$_SESSION['Monster_HitPoints']."/".$_SESSION['Monster_TotalHitPoints']." HP";
 			echo "</td><td>";
-			if ($_SESSION['Monster']==='Ogre'){
-				echo "<img src=\"./images/monster.png\" height = 175><br>ogre";
-			}if ($_SESSION['Monster']==='Zombie'){
-				echo "<img src=\"./images/zomb.png\" height = 175><br>zombie";
-			}if ($_SESSION['Monster']==='Troll'){
-				echo "<img src=\"./images/zomb.png\" height = 175><br>troll";
-			}			
+			echo "<img src=\"./images/mr_electric.jpg\" height = 175><br>";			
 			echo "</td></tr><tr><td>";
 			if ($_SESSION['Player']==='Sally'){
 				echo "<img src=\"./images/sally.png\" height = 175><br>";
@@ -221,7 +191,8 @@
 				echo "<img src=\"./images/joe.png\" height = 175><br>";
 			}
 			echo "</td><td>";
-			echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress>";
+			echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress><br>";
+			echo "".$_SESSION['Player_HitPoints']."/".$_SESSION['Player_TotalHitPoints']." HP";
 			echo "</td></tr></table>";
 			
 			
@@ -238,14 +209,16 @@
 		if ($RoundResults === FALSE) {
 			if ($_SESSION['Player_HitPoints'] > 0) {
 			#-- Player WON the fight; story can continue --#
-				echo "<p>".$_SESSION['Player']." you WON your fight against ".$_SESSION['Monster'].".  You are able to continue the story...</p>";				
-				echo "<form name=\"StoryReturn\" action=\"Game.php\" method=\"post\">";		
-					echo "<input type=\"submit\" value=\"Return to Story\" name=\"StoryReturn\" />";
+				echo "<p>".$_SESSION['Player']." you WON your fight against ".$_SESSION['Monster']."";				
+				echo "<form name=\"StoryReturn\" action=\"Start_Game.php\" method=\"post\">";		
+					echo "<input type=\"submit\" value=\"New Adventure!\" name=\"StoryReturn\" />";
 					echo "<br /><br />";
 				echo "</form>";
 			} else {
 			#-- Player LOST the fight; story cannot continue; thus return to home page --#
 				echo "<p>".$_SESSION['Player']." you LOST the Fight against ".$_SESSION['Monster'].".  Sadly, your story cannot continue. Better luck next time.</p>";
+				echo "<form name=\"StoryReturn\" action=\"Start_Game.php\" method=\"post\">";
+				echo "<input type=\"submit\" value=\"Try a New Adventure!\" name=\"StoryReturn\" />";
 				header("refresh:10;url=http://localhost:8888/ICS499_Capstone/Index.php");				
 			}
 			require ("template_Bottom.php");

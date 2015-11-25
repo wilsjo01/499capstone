@@ -29,13 +29,19 @@
 				echo "&nbsp &nbsp";
 				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
 			echo "</form>";
-		} else {
+		}elseif($fight===1) {
 			echo "<form name=\"Start Fight\" method=\"post\" action=\"Fight.php\">";
 				echo "<input type=\"hidden\" name=\"CharSelection\" value=\"".$_SESSION['character']."\">";
 				echo "<input type=\"submit\" value=\"Begin Defense\" name=\"StartFight\" style=\"width:100px\">";
 				echo "&nbsp &nbsp";
 				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
 			echo "</form>";
+		}elseif ($fight===2){
+			echo "<form name=\"Start Fight\" method=\"post\" action=\"BossFight.php\">";
+			echo "<input type=\"hidden\" name=\"CharSelection\" value=\"".$_SESSION['character']."\">";
+			echo "<input type=\"submit\" value=\"Begin FINAL BOSS FIGHT\" name=\"StartFight\" style=\"width:200px\">";
+			echo "&nbsp &nbsp";
+			echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
 		}
 	}
 	
@@ -162,6 +168,8 @@
 		Print_Game_Choices($_SESSION['fight']);
 	} else {
 		print nl2br($_SESSION['post_story']);
+		echo "link to wattshock game";
+		Print_Game_Choices(2);
 		header("refresh:10;url=http://localhost:8080/ICS499_Capstone/Index.php");
 	}
 	echo "</p>";
