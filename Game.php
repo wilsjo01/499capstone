@@ -29,14 +29,14 @@
 				echo "&nbsp &nbsp";
 				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
 			echo "</form>";
-		}elseif($fight===1) {
+		} elseif($fight===1) {
 			echo "<form name=\"Start Fight\" method=\"post\" action=\"Fight.php\">";
 				echo "<input type=\"hidden\" name=\"CharSelection\" value=\"".$_SESSION['character']."\">";
 				echo "<input type=\"submit\" value=\"Begin Defense\" name=\"StartFight\" style=\"width:100px\">";
 				echo "&nbsp &nbsp";
 				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
 			echo "</form>";
-		}elseif ($fight===2){
+		} elseif ($fight===2){
 			echo "<form name=\"Start Fight\" method=\"post\" action=\"BossFight.php\">";
 			echo "<input type=\"hidden\" name=\"CharSelection\" value=\"".$_SESSION['character']."\">";
 			echo "<input type=\"submit\" value=\"Begin FINAL BOSS FIGHT\" name=\"StartFight\" style=\"width:200px\">";
@@ -71,7 +71,28 @@
 		);
 	}
 	
-	Function Game2 () {}
+	Function Game2 () {
+		$_SESSION['story_title'] = "MetroState Campus Adventure";
+		$_SESSION['story_base'] = file_get_contents('./Game_Stories/Game2/Metro_Garage.txt', true);
+		$_SESSION['post_story'] = file_get_contents('./Game_Stories/Game2/Deans_Office.txt', true);
+		
+		#Option One Stories
+		$_SESSION['OptOneStories'] = array (
+			array(1,"Admissions Desk","Admissions_Desk.txt",0),
+			array(2,"Lunchroom","Lunchroom.txt",0),
+			array(3,"Auditorium","Auditorium.txt",1),
+			array(4,"IT Department","IT_Department.txt",0),
+			array(5,"Faculty Offices","Faculty_Offices.txt",0)
+		);
+		#Option Two Stories
+		$_SESSION['OptTwoStories'] = array (
+			array(1,"Library","Library.txt",1),
+			array(2,"Great Hall","Great_Hall.txt",1),
+			array(3,"Bookstore","Bookstore.txt",0),
+			array(4,"Financial Aid Office","Financial_Aid_Office.txt",0),
+			array(5,"Science Lab","Science_Lab.txt",1)
+		);
+	}
 	
 	Function Game3 () {}
 	
@@ -97,20 +118,8 @@
 			case "Game1":
 				Game1 ();
 				break;
-			case "Game1":
+			case "Game2":
 				Game2 ();
-				break;
-			case "Game1":
-				Game3 ();
-				break;
-			case "Game1":
-				Game4 ();
-				break;
-			case "Game1":
-				Game5 ();
-				break;
-			case "Game1":
-				Game6 ();
 				break;
 		}
 	}
@@ -137,10 +146,10 @@
 		if ($_SESSION['page'] <= 4) {
 			#Get the Story the User Selected
 			if ($_SESSION['choice'] == "Option1") {
-				$_SESSION['story'] = file_get_contents('./Game_Stories/Game1/'.$_SESSION['OptOneStories'][$i][2], true);
+				$_SESSION['story'] = file_get_contents('./Game_Stories/'.$_SESSION['Game'].'/'.$_SESSION['OptOneStories'][$i][2], true);
 				$_SESSION['fight'] = $_SESSION['OptOneStories'][$i][3];
 			} else if ($_SESSION['choice'] == "Option2") {
-				$_SESSION['story'] = file_get_contents('./Game_Stories/Game1/'.$_SESSION['OptTwoStories'][$i][2], true);
+				$_SESSION['story'] = file_get_contents('./Game_Stories/'.$_SESSION['Game'].'/'.$_SESSION['OptTwoStories'][$i][2], true);
 				$_SESSION['fight'] = $_SESSION['OptTwoStories'][$i][3];
 			}
 		}
