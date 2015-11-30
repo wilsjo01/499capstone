@@ -1,15 +1,9 @@
-“Sure, what do you need me to do” you reply to the wizard.
+"Sure, what do you need me to do?" you reply to the wizard.
 
-“I need you to find an orb, glowing in the same way as my orb does, but red in color. Bring it to me and I can perform the task of closing the rifts that the monsters are passing through. Perhaps you can start in the library.”
+"I need you to find an orb, glowing in the same way as my orb does, but red in color. Bring it to me and I can perform the task of closing the rifts that the monsters are passing through. Perhaps you can start in the library."
 
 The wizard goes on to tell you that he cannot follow you there, but he can still communicate with you using your mind if you are willing to listen. You agree, but are still a bit nervous that he has not told you why he needs this orb and who he really is.
 
 You think nothing of it as you head to the library. Katie is going to be mad, but the future of the world is at stake, right? 
 
-You come to the library doors, it looks as if they are just closing up and you make it inside. You begin to walk up and down the rows of books when, suddenly, you find something. It’s not a red orb, but something much more terrifying…
-
-FIGHT
-
-Want to try the lunchroom? (Go to lunchroom)
-
-Look in the Great Hall (Great Hall)
+You come to the library doors, it looks as if they are just closing up and you make it inside. You begin to walk up and down the rows of books when, suddenly, you find something. It's not a red orb, but something much more terrifying

@@ -149,9 +149,9 @@
 		if ($_SESSION['Player']==='Sally'){
 			echo "<img src=\"./images/sally_back.png\" height = 175><br>";
 		}if ($_SESSION['Player']==='Tom'){
-			echo "<img src=\"./images/tom.png\" height = 175><br>";
+			echo "<img src=\"./images/tom_back.png\" height = 175><br>";
 		}if ($_SESSION['Player']==='Joe'){
-			echo "<img src=\"./images/joe.png\" height = 175><br>";
+			echo "<img src=\"./images/joe_back.png\" height = 175><br>";
 		}
 		echo "</td><td>";
 		echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress><br>";
@@ -186,9 +186,9 @@
 			if ($_SESSION['Player']==='Sally'){
 				echo "<img src=\"./images/sally_back.png\" height = 175><br>";
 			}if ($_SESSION['Player']==='Tom'){
-				echo "<img src=\"./images/tom.png\" height = 175><br>";
+				echo "<img src=\"./images/tom_back.png\" height = 175><br>";
 			}if ($_SESSION['Player']==='Joe'){
-				echo "<img src=\"./images/joe.png\" height = 175><br>";
+				echo "<img src=\"./images/joe_back.png\" height = 175><br>";
 			}
 			echo "</td><td>";
 			echo "<progress max=\"".$_SESSION['Player_TotalHitPoints']."\" value=\"".$_SESSION['Player_HitPoints']."\"> other</progress><br>";
