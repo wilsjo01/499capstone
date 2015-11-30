@@ -73,7 +73,7 @@
 	
 	Function Game2 () {
 		$_SESSION['story_title'] = "MetroState Campus Adventure";
-		$_SESSION['story_base'] = file_get_contents('./Game_Stories/Game2/Metro_Garage.txt', true);
+		$_SESSION['story_base'] = file_get_contents('./Game_Stories/Game2/MetroState_Garage.txt', true);
 		$_SESSION['post_story'] = file_get_contents('./Game_Stories/Game2/Deans_Office.txt', true);
 		
 		#Option One Stories
