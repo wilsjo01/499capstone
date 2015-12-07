@@ -56,8 +56,8 @@ nav {
 
 h3{
 	padding: 10px;
-	
-	font-family: apple,serif ;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/*font-family: apple,serif ;*/
 	font-size: 25px;
 	color: black;
 	text-align:center;
@@ -65,7 +65,8 @@ h3{
 
 h1, h2, h4, h5 {
 	
-	font-family: apple,sans-serif ;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/*font-family: apple,serif ;*/
 	font-size: 25px;
 	color: black;
 	text-align:left;

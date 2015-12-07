@@ -170,7 +170,7 @@
 		}if ($_SESSION['Monster']==='Zombie'){
 			echo "<img src=\"./images/zomb.png\" height = 175><br>";
 		}if ($_SESSION['Monster']==='Troll'){
-			echo "<img src=\"./images/zomb.png\" height = 175><br>";
+			echo "<img src=\"./images/beast.png\" height = 175><br>";
 		}
 		echo "</td></tr><tr><td>";
 		if ($_SESSION['Player']==='Sally'){
@@ -213,7 +213,7 @@
 			}if ($_SESSION['Monster']==='Zombie'){
 				echo "<img src=\"./images/zomb.png\" height = 175><br>";
 			}if ($_SESSION['Monster']==='Troll'){
-				echo "<img src=\"./images/zomb.png\" height = 175><br>";
+				echo "<img src=\"./images/beast.png\" height = 175><br>";
 			}			
 			echo "</td></tr><tr><td>";
 			if ($_SESSION['Player']==='Sally'){

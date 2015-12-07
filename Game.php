@@ -32,16 +32,20 @@
 		} elseif($fight===1) {
 			echo "<form name=\"Start Fight\" method=\"post\" action=\"Fight.php\">";
 				echo "<input type=\"hidden\" name=\"CharSelection\" value=\"".$_SESSION['character']."\">";
-				echo "<input type=\"submit\" value=\"Begin Defense\" name=\"StartFight\" style=\"width:100px\">";
+				echo "<input type=\"submit\" value=\"Begin Defense\" name=\"StartFight\" style=\"width:100px\"></form>";
 				echo "&nbsp &nbsp";
-				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
-			echo "</form>";
+				echo "<form name=\"New Game\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">";
+				echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\"></form>";
 		} elseif ($fight===2){
 			echo "<form name=\"Start Fight\" method=\"post\" action=\"BossFight.php\">";
 			echo "<input type=\"hidden\" name=\"CharSelection\" value=\"".$_SESSION['character']."\">";
-			echo "<input type=\"submit\" value=\"Begin FINAL BOSS FIGHT\" name=\"StartFight\" style=\"width:200px\">";
+			echo "<input type=\"submit\" value=\"Begin FINAL BOSS FIGHT\" name=\"StartFight\" style=\"width:200px\"></form>";
 			echo "&nbsp &nbsp";
-			echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\">";
+			echo "<form name=\"New Game\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">";
+			echo "<input type=\"submit\" value=\"RESET Game\" name=\"ResetGame\" style=\"width:100px\"></form>";
+		} elseif ($fight==3){
+			echo "<form name=\"New Game\" method=\"post\" action=\"Start_Game.php\">";
+			echo "<br><input type=\"submit\" value=\"New Game\" name=\"New Game\" style=\"width:100px\">";
 		}
 	}
 	
@@ -59,7 +63,7 @@
 			array(2,"Concordia University","Concordia.txt",0),
 			array(3,"Augsburg College","Augsburg.txt",0),
 			array(4,"Foshay Tower","Foshay.txt",1),
-			array(5,"First Ave & 7th St Entry","FirstAve.txt",0)
+			array(5,"First Ave & 7th St Entry","FirstAve.txt",2)
 		);
 		#Option Two Stories
 		$_SESSION['OptTwoStories'] = array (
@@ -67,7 +71,7 @@
 			array(2,"Midway Marketplace","Midway.txt",1),
 			array(3,"University of Minnesota","UofM.txt",0),
 			array(4,"Hennepin County Gov't Center","Hennepin_County.txt",0),
-			array(5,"Target Center","Target_Center.txt",1)
+			array(5,"Target Center","Target_Center.txt",2)
 		);
 	}
 	
@@ -78,7 +82,7 @@
 		
 		#Option One Stories
 		$_SESSION['OptOneStories'] = array (
-			array(1,"Admissions Desk","Admissions_Desk.txt",0),
+			array(1,"Admissions Desk","Admissions_Desk.txt",3),
 			array(2,"Lunchroom","Lunchroom.txt",0),
 			array(3,"Auditorium","Auditorium.txt",1),
 			array(4,"IT Department","IT_Department.txt",0),
@@ -177,7 +181,6 @@
 		Print_Game_Choices($_SESSION['fight']);
 	} else {
 		print nl2br($_SESSION['post_story']);
-		echo "link to wattshock game";
 		Print_Game_Choices(2);
 		header("refresh:10;url=http://localhost:8080/ICS499_Capstone/Index.php");
 	}

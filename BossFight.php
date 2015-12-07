@@ -144,7 +144,7 @@
 		echo "<progress max=\"".$_SESSION['Monster_TotalHitPoints']."\" value=\"".$_SESSION['Monster_HitPoints']."\">CHECK</progress><br>";
 		echo "".$_SESSION['Monster_HitPoints']."/".$_SESSION['Monster_TotalHitPoints']." HP";
 		echo "</td><td>";
-		echo "<img src=\"./images/mr_electric.jpg\" height = 175><br>";
+		echo "<img src=\"./images/wattshock.png\" height = 250><br>";
 		echo "</td></tr><tr><td>";
 		if ($_SESSION['Player']==='Sally'){
 			echo "<img src=\"./images/sally_back.png\" height = 175><br>";
