@@ -1,0 +1,242 @@
+html {	
+	background-image: url("../images/cartoon_forest.png");
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+body {
+	background-image: url("../images/gray.jpg");
+	background-size: 200px 200px;
+	opacity:0.9;
+
+	font-family: apple,serif ;
+	font-size:12px;
+	
+	width: 900px;
+	margin: 15px auto;
+	padding: 15px 15px;
+	
+	border: 3px solid black;
+	border-radius: 25px 25px 10px 10px;
+}
+
+@font-face {
+    font-family:apple;
+    src: url(Hiragino.otf);
+}
+}@font-face {
+    font-family:keepCalm;
+    src: url(KeepCalm.ttf);
+}
+
+
+header {
+	border-bottom: 2px solid #808080;
+}
+
+table.table1, table.table1 th, table.table1 td{
+	border: 1px solid black;
+	border: 1px solid black;
+	text-align:center;
+	padding:3px;
+}
+
+table.itemDetail, table.itemDetail th, table.itemDetail td {
+	background-color: #C0C0C0;
+	border: 1px solid black;
+	border: 1px solid black;
+	text-align: center;
+	padding: 1px;
+}
+
+nav {
+	font-size: 16px;
+}
+
+h3{
+	padding: 10px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/*font-family: apple,serif ;*/
+	font-size: 25px;
+	color: black;
+	text-align:center;
+}
+
+h1, h2, h4, h5 {
+	
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/*font-family: apple,serif ;*/
+	font-size: 25px;
+	color: black;
+	text-align:left;
+}
+
+footer {
+	border-top: 2px solid #808080;
+	clear: both;
+}
+
+/*input[type="radio"] {
+    display: none;
+}
+input[type="radio"]:checked + label {
+    border: 1px solid red;
+}*/
+
+#sidebar {
+	width: 190px;
+	height: 400px;
+	float: left;
+	border-right: 2px solid black;
+}
+
+section {
+	width: 600px;
+	height: 400px;
+	float: right;
+}
+
+p {
+	color: black;
+}
+
+nav {
+	font-weight: bold;
+	color: black;
+	font-size:15;
+}
+
+a {
+	font-weight: bolder;
+}
+
+a:link {
+    color: #262091;
+}
+
+a:visited {
+    color: #5a3ea3;
+}
+
+img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 175px;
+  height: 15px;
+  border-style: solid;
+  border-color: #4d4d4d;
+  border-width: 1px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(top, 
+	                           rgba(45, 227, 151, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #2de397, #10c479);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+}
+
+
+/* Styles for the Carousel - START */
+#carousel {
+	margin: 10px 0 0 0;
+	padding:0;
+	width:800px;
+	height:100px;
+}
+.button	{
+	margin:45px 10px 0 10px;
+	float:left;
+	height:25px;
+	width:25px;
+}
+.panel {
+	margin:0;
+	overflow:hidden;
+	position:relative;
+	float:left;
+	width:200px;
+	height:100px;
+}
+.panel-inner {
+	left:0;
+    position:absolute;
+    height:200px;
+    list-style:none;
+    margin:0;
+    padding:0
+}
+.panel-inner li	{
+	text-align: center;
+	padding: 0;
+	margin: 1px 1px 0 0;
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: #FFF
+}
+.panel-inner li img	{
+	width: 100px;
+	height: 100px;
+	margin: 1px 0 0 1px
+}
+/* Styles for the Carousel - END */
+
+
+
+/*fancy css for hovering radio buttons*/
+.cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.Tom{background-image:url(tom.png);}
+.Sally{background-image:url(sally.png);}
+.Joe{background-image:url(joe.png);}
+.Game1{background-image:url(purple_book.png)}
+.Game2{background-image:url(green-book-md.png)}
+
+.cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:200px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
